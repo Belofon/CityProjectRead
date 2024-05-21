@@ -5,10 +5,11 @@ def check(old, new):
     if old[len(old) - 1].capitalize() == new[0]:
         return True
     else:
-        if old[len(old) - 1] == 'ь' and old[len(old) - 2].capitalize() == new[0]:
+        if (old[len(old) - 1] == 'ь' or old[len(old) - 1] == 'ы') and old[len(old) - 2].capitalize() == new[0]:
             return True
         else:
             return False
+
 
 print('Ведется настройка программы. Пожалуйста, подождите...')
 cilistfl = open('list', encoding='utf-8')
@@ -18,7 +19,8 @@ for a in cilistfl.readlines():
         cilist.append(a[:len(a) - 1])
 fcounter = 0
 print(f'Вас приветствует программа для игры в города.')
-print(f'Ваша задача - называть города мира, начинающиеся с конечной буквы указанных данной программой.')
+print(f'Ваша задача - называть города мира, начинающиеся с конечной буквы указанных данной программой (или '
+      f'предпоследней, если это "ь" или "ы").')
 print(f'Игра закончится, если вы допустите 3 ошибки. Удачи.')
 curcit = random.choice(cilist)
 print(f'Первый город - {curcit}')
